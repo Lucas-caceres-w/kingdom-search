@@ -18,10 +18,12 @@
 
 body {
   color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+  background-color: #0f0f13;
+}
+
+.border-gradient {
+  border: 1px solid;
+  border-image: linear-gradient(#c026d3, #ec4899) 30;
+  border-image-slice: 1;
+  border-radius: 6px;
 }
