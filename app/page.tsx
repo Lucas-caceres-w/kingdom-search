@@ -71,8 +71,8 @@ export default function Home() {
   };
 
   return (
-    <main className="flex min-h-screen flex-col items-center gap-12 p-6 md:p-12 lg:p-24 lg:pt-4 pt-4 md:pt-4">
-      <nav className="w-full flex justify-start">
+    <>
+      <nav className="w-full flex justify-start bg-slate-600/60">
         <Image
           width={200}
           height={200}
@@ -80,59 +80,64 @@ export default function Home() {
           src={"/assets/DRAGON_GAME.png"}
         />
       </nav>
-      <section className="flex flex-col md:flex-row gap-4">
-        <input
-          type="text"
-          name="id"
-          placeholder="Ingrese su id"
-          onChange={handleChange}
-          value={fecha.id}
-          className="border-gradient text-neutral-400 rounded-sm p-2 bg-inherit outline-none"
-        />
-        <input
-          type="date"
-          name="start"
-          onChange={handleChange}
-          value={fecha.start}
-          className="border-gradient text-neutral-400 rounded-sm p-2 bg-inherit outline-none"
-        />
-        <input
-          type="date"
-          name="end"
-          onChange={handleChange}
-          value={fecha.end}
-          className="border-gradient text-neutral-400 rounded-sm p-2 bg-inherit outline-none"
-        />
-        <button
-          onClick={() => GetData(fecha.id, fecha.start, fecha.end)}
-          className="text-white rounded-sm p-2 bg-blue-700 active:bg-blue-800 bg-gradient-to-tr from-fuchsia-600 to-pink-500"
-        >
-          Buscar
-        </button>
-        <button
-          onClick={() => ClearSearch()}
-          className="text-white rounded-sm p-2 bg-blue-700 active:bg-blue-800 bg-gradient-to-r from-fuchsia-600 to-pink-500"
-        >
-          Limpiar busqueda
-        </button>
-      </section>
-      <div className="w-full">
-        <table className="w-full xl:w-10/12 m-auto">
-          <thead className="text-zinc-200">
-            <th className="p-4 xl:p-10 text-left border-y border-neutral-500 w-48">
-              Kingdom ID
-            </th>
-            <th className="p-4 xl:p-10 text-left border-y border-neutral-500 w-48">
-              Total
-            </th>
-            <th className="p-4 xl:p-10 text-left border-y border-neutral-500 w-48">
-              Name
-            </th>
-            <th className="p-4 xl:p-10 text-left border-y border-neutral-500 w-48">
-              Continent
-            </th>
-          </thead>
-          <tbody>
+      <main className="flex min-h-screen flex-col items-center gap-12 mt-12 p-6 md:p-12 lg:p-24 lg:pt-4 pt-4 md:pt-4">
+        <section className="flex flex-col md:flex-row gap-4">
+          <input
+            type="text"
+            name="id"
+            placeholder="Ingrese su id"
+            onChange={handleChange}
+            value={fecha.id}
+            className="border-gradient text-neutral-400 rounded-sm p-2 bg-inherit outline-none"
+          />
+          <input
+            type="date"
+            name="start"
+            onChange={handleChange}
+            value={fecha.start}
+            className="border-gradient text-neutral-400 rounded-sm p-2 bg-inherit outline-none"
+          />
+          <input
+            type="date"
+            name="end"
+            onChange={handleChange}
+            value={fecha.end}
+            className="border-gradient text-neutral-400 rounded-sm p-2 bg-inherit outline-none"
+          />
+          <button
+            type="button"
+            onClick={() => GetData(fecha.id, fecha.start, fecha.end)}
+            value={"Buscar"}
+            className="text-white rounded-sm p-2 bg-blue-700 active:bg-blue-800 bg-gradient-to-tr from-fuchsia-600 to-pink-500"
+          >
+            Buscar
+          </button>
+          <button
+            type="button"
+            onClick={() => ClearSearch()}
+            className="text-white rounded-sm p-2 bg-blue-700 active:bg-blue-800 bg-gradient-to-r from-fuchsia-600 to-pink-500"
+          >
+            Limpiar busqueda
+          </button>
+        </section>
+        <div className="w-full">
+          <table className="w-full xl:w-10/12 m-auto">
+            <thead className="text-zinc-200">
+              <tr>
+                <th className="p-4 xl:p-10 text-left border-y border-neutral-500 w-48">
+                  Kingdom ID
+                </th>
+                <th className="p-4 xl:p-10 text-left border-y border-neutral-500 w-48">
+                  Total
+                </th>
+                <th className="p-4 xl:p-10 text-left border-y border-neutral-500 w-48">
+                  Name
+                </th>
+                <th className="p-4 xl:p-10 text-left border-y border-neutral-500 w-48">
+                  Continent
+                </th>
+              </tr>
+            </thead>
             {data ? (
               data.length > 0 &&
               data.map((e, index) => {
@@ -154,13 +159,13 @@ export default function Home() {
                 );
               })
             ) : (
-              <th colSpan={4} className="text-center p-10 m-auto text-red-500">
+              <td colSpan={4} className="text-center p-10 m-auto text-red-500">
                 {message ? message : "Sin resultados"}
-              </th>
+              </td>
             )}
-          </tbody>
-        </table>
-      </div>
-    </main>
+          </table>
+        </div>
+      </main>
+    </>
   );
 }
